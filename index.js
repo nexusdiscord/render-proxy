@@ -30,7 +30,7 @@ app.all('*', async (req, res) => {
     return res.status(400).json({
       error: 'Invalid URL',
       message: 'Please provide a valid URL to proxy',
-      usage: `:///https://example.com`,
+      usage: req.protocol + '://' + req.get('host') + '/https://example.com',
     });
   }
   
@@ -99,6 +99,6 @@ app.all('*', async (req, res) => {
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(🚀 Proxy server is running on port );
-  console.log(📡 Ready to proxy requests!);
+  console.log('🚀 Proxy server is running on port ' + PORT);
+  console.log('📡 Ready to proxy requests!');
 });
